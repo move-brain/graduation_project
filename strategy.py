@@ -22,7 +22,7 @@ def get_trans_matrix(trans_m: List[Bitset], m: List[Bitset]) -> None:
         for j in range(n):
             # 赋值逻辑与 C++ 版本完全一致：
             # tmp[m[0].size() - 1 - j] = m[j][m[0].size() - i - 1];
-            tmp[SIZE - 1 - j] = m[j][SIZE - i - 1]
+            tmp[len(m) - 1 - j] = m[j][len(m) - i - 1]
         trans_m.append(tmp)
 
 
@@ -143,7 +143,6 @@ def strgy3(m: List[Bitset]) -> List[xpair]:
         base_oper: List[xpair] = []
         value = 0
         Reduced_Row = select_oper(m, base_oper, value, 0)
-        # print(Reduced_Row)
         trans_m: List[Bitset] = []
         get_trans_matrix(trans_m, m)
 
@@ -151,6 +150,7 @@ def strgy3(m: List[Bitset]) -> List[xpair]:
 
         if len(base_oper) >= 1:
             rand_num = random.randrange(len(base_oper))
+            # rand_num = 0
             op = base_oper[rand_num]
             if not op.flag:
                 m[op.dst] ^= m[op.src]

@@ -64,7 +64,8 @@ class Bitset:
         return Bitset(max(self.size, other.size), self.value | other.value)
 
     def __repr__(self):
-        return bin(self.value)[2:].zfill(self.size)[::-1]
+        # 不反转字符串，最高位在最左边
+        return bin(self.value)[2:].zfill(self.size)
 
     def __xor__(self, other: 'Bitset') -> 'Bitset':
         if not isinstance(other, Bitset):

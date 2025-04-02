@@ -10,7 +10,7 @@ PTHREAD_CREATE_JOINABLE = 0
 
 
 def get_reduced_matrix(seq: List[xpair], m: List[Bitset]) -> List[Bitset]:
-    tmp_m = [copy.deepcopy(row) for row in m]
+    tmp_m = m.copy()
     for pair in seq:
         tmp_m[pair.dst] ^= tmp_m[pair.src]
     return tmp_m
