@@ -59,4 +59,8 @@ def get_matrix() -> List[Bitset]:
 # 0x06020204,
 # 0x03010102
 
+
+# 4x4
+# 0xC, 0x7, 0x3, 0xE
+
 FILENAME = 'FSE_SKOP15_4x4_4.txt'

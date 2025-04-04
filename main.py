@@ -3,6 +3,7 @@ import copy
 from matrix import FILENAME, get_matrix
 from reduce import reduce_matrix, get_reduced_matrix
 from typing import List
+
 # 假设 xpair 类已经在你的代码中定义
 
 # 引入 Qiskit 模块
@@ -92,13 +93,13 @@ def main():
 
                 # 集成量子编程部分
                 # 假设量子比特数等于矩阵的列数（或行数）
-                num_qubits = len(seq)
+                num_qubits = len(m_orig)
                 qc = build_quantum_circuit(seq, num_qubits)
-                print("生成的量子电路：")
-                print(qc.draw())
-
+                fig = qc.draw(output='mpl')
+                print("量子电路图：", fig)
+                fig.savefig(f"quantum_circuit_{len(m_orig)}.png")
                 # 仿真并展示量子电路的测量结果
-                simulate_circuit(qc)
+                # simulate_circuit(qc)
 
     except KeyboardInterrupt:
         end_time = time.time()
